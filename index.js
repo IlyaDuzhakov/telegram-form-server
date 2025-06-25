@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
+const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 
 app.post('/send-message', async (req, res) => {
