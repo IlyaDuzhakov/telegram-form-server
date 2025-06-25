@@ -5,8 +5,11 @@ require('dotenv').config();
 const app = express();
 const cors = require('cors');
 app.use(cors({
-  origin: 'https://ilyaduzhakov.ru'
+  origin: 'https://ilyaduzhakov.ru',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
 }));
+
 
 app.use(express.json());
 
