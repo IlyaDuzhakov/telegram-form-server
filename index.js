@@ -13,6 +13,9 @@ app.use(cors({
 
 app.use(express.json());
 
+app.options('/send-message', cors()); // это разрешит preflight-запросы
+
+
 app.post('/send-message', async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://ilyaduzhakov.ru');
   const { name, email } = req.body;
