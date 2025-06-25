@@ -14,6 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 app.post('/send-message', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://ilyaduzhakov.ru');
   const { name, email } = req.body;
   const text = `📩 Новая заявка\n👤 Имя: ${name}\n📧 Email: ${email}`;
 
