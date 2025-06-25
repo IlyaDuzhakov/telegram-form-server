@@ -18,8 +18,14 @@ app.options('/send-message', cors()); // это разрешит preflight-за�
 
 app.post('/send-message', async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://ilyaduzhakov.ru');
-  const { name, email } = req.body;
-  const text = `📩 Новая заявка\n👤 Имя: ${name}\n📧 Email: ${email}`;
+
+  const { name, email, phone, comment } = req.body;
+
+  const text = `📩 Новая заявка
+👤 Имя: ${name}
+📧 Email: ${email}
+📱 Телефон: ${phone}
+💬 Комментарий: ${comment}`;
 
   const url = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`;
 
@@ -37,4 +43,3 @@ app.post('/send-message', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("✅ Сервер запущен на порту 3000"));
