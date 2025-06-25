@@ -4,7 +4,10 @@ require('dotenv').config();
 
 const app = express();
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+  origin: 'https://ilyaduzhakov.ru'
+}));
+
 app.use(express.json());
 
 app.post('/send-message', async (req, res) => {
