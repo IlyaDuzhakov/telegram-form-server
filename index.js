@@ -4,21 +4,17 @@ require('dotenv').config();
 
 const app = express();
 const cors = require('cors');
+
 app.use(cors({
   origin: 'https://ilyaduzhakov.ru',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
 
-
 app.use(express.json());
 
-app.options('/send-message', cors()); // это разрешит preflight-запросы
-
-
+// 💬 Твоя логика обработки запроса
 app.post('/send-message', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://ilyaduzhakov.ru');
-
   const { name, email, phone, comment } = req.body;
 
   const text = `📩 Новая заявка
@@ -43,3 +39,8 @@ app.post('/send-message', async (req, res) => {
   }
 });
 
+// ✅ А вот теперь запуск сервера
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Сервер запущен на порту ${PORT}`);
+});
